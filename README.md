@@ -10,32 +10,38 @@ Install dependencies
 npm i
 ```
 
-Run the development server:
+### Database set up
 
-```bash
-npm run dev
-```
+Copy the `.env.example` file to `.env` and uncomment the fields. You should change the username and password. The `docker-compose.yml` file is configured to read `.env`, so the database will be set up with those credentials.
 
-## Database set up
-
-The app is configured to return a default list of advocates. This will allow you to get the app up and running without needing to configure a database. If you’d like to configure a database, you’re encouraged to do so. You can uncomment the url in `.env` and the line in `src/app/api/advocates/route.ts` to test retrieving advocates from the database.
-
-1. Feel free to use whatever configuration of postgres you like. The project is set up to use docker-compose.yml to set up postgres. The url is in .env.
+1. Spin up the database in the background. It should create the database and user.
 
 ```bash
 docker compose up -d
 ```
 
-2. Create a `solaceassignment` database.
-
-3. Push migration to the database
+2. Run the database migrations
 
 ```bash
-npx drizzle-kit push
+npx drizzle-kit migrate
 ```
 
-4. Seed the database
+OR
 
 ```bash
-curl -X POST http://localhost:3000/api/seed
+npm run migrate:up
+```
+
+3. Seed the database. If you want a different dataset or more advocates, change the `seed` and `maxAdvocates` values found in `./src/db/seed/index.ts` to whatever you want. A given seed value should generate reproducable results on each run, which means that if you attempt to seed twice without wiping out the data, you will get primary key conflicts on every insert.
+
+```bash
+npm run seed
+```
+
+### Run the development server
+
+Run the development server:
+
+```bash
+npm run dev
 ```

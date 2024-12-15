@@ -33,6 +33,7 @@
 - [x] Request to `advocates` currently fires twice. Moving to `useSWR`, so this should go away.
 - [ ] Accessibility should be prioritized, given the purpose.
 - [x] Debounce filter
+- [ ] Filter presets? Dropdowns to filter by specialties present in current dataset?
 - [ ] More tests!
 
 ## Backend
