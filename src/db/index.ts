@@ -1,20 +1,26 @@
-import { drizzle } from 'drizzle-orm/postgres-js'
-import postgres from 'postgres'
+import 'dotenv/config'
+import { drizzle, NodePgDatabase } from 'drizzle-orm/node-postgres'
+import { Pool } from 'pg'
+import { schema } from './schema'
 
-const setup = () => {
+// Sticking with naive singleton to save time. It's not a true singleton, most likely,
+// because of how next bundles things, but we can't let it get out of control during dev
+export const getClient = () => {
   if (!process.env.DATABASE_URL) {
-    console.error('DATABASE_URL is not set')
-    return {
-      select: () => ({
-        from: () => [],
-      }),
-    }
+    throw new Error('DATABASE_URL is not set')
+  }
+  if (!globalThis.__db) {
+    // Prefer using a connection pool.
+    const pool = new Pool({ connectionString: process.env.DATABASE_URL })
+    // Pass the schema here.
+    globalThis.__db = drizzle(pool, { schema })
   }
 
-  // for query purposes
-  const queryClient = postgres(process.env.DATABASE_URL)
-  const db = drizzle(queryClient)
-  return db
+  return globalThis.__db
 }
 
-export default setup()
+declare global {
+  var __db: NodePgDatabase<typeof schema> & {
+    $client: Pool
+  }
+}
