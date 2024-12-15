@@ -6,33 +6,34 @@
 - [x] dotenv
 - [x] tsx
 - [x] improve environment config, docker compose, etc. Need better secrets handling.
-- [ ] Etc
+- [ ] Etc?
 
 ## Frontend
 
 ### Hard Errors
 
-- [ ] `src/app/page.tsx` - List items without key
-- [ ] Bad table formatting -- `th` needs `tr`
-- [ ] Search calls string function on number
+- [x] `src/app/page.tsx` - List items without key
+- [x] Bad table formatting -- `th` needs `tr`
+- [x] Search calls string function on number
 
 ### Standards, Linting, etc
 
-- [ ] No type definitions
-- [ ] using `document.getElementById().innerHTML` to set a value
-- [ ] `input` and `button` outside of a `form`
-- [ ] Inline style objects lead to unmaintainable projects
+- [ ] No type definitions. I added some, but I could spend a lot more time here.
+- [x] using `document.getElementById().innerHTML` to set a value
+- [x] Inline style objects lead to unmaintainable projects
+- [ ] Tests! Didn't have time.
 
 ### Improvements
 
-- [ ] move to `useSWR`
-- [ ] It's pretty ugly. Make it less so. Snag heroicons or FA? HeadlessUI? Probably.
-- [ ] Shamelessly steal Solace logo?
-- [ ] Break a few things out into their own components for better styling, state management, etc.
-- [ ] Filter is very basic. Improve that.
-- [ ] Request to `advocates` currently fires twice. Moving to `useSWR`, so this should go away.
-- [ ] Accessibility should be prioritized, given the purpose'
-- [ ] Debounce filter
+- [x] move to `useSWR`
+- [x] It's pretty ugly. Make it less so. Snag heroicons or FA? HeadlessUI? Probably. (I marked this done, but it might still be ugly.)
+- [x] Shamelessly steal Solace logo?
+- [x] Break a few things out into their own components for better styling, state management, etc.
+- [x] Filter is very basic. Improve that. (Still mostly basic, but it's a bit better. Might break somewhere.)
+- [x] Request to `advocates` currently fires twice. Moving to `useSWR`, so this should go away.
+- [ ] Accessibility should be prioritized, given the purpose.
+- [x] Debounce filter
+- [ ] More tests!
 
 ## Backend
 
@@ -47,3 +48,4 @@
 - [x] Better seeding. Use Faker with a seed so that it can be tested if we want.
 - [x] Infer drizzle types with `InferSelectModel`
 - [ ] Improve env/config handling (This is partially done with dotenv, but it could be way better)
+- [ ] More tests!

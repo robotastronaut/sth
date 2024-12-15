@@ -12,8 +12,11 @@
     "seed": "tsx ./src/db/seed/index.ts"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.2",
+    "lodash.debounce": "^4.0.8",
     "next": "^15.1.0",
     "pg": "^8.13.1",
     "postgres": "^3.4.4",
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.14.12",
     "@types/pg": "^8.11.10",
     "@types/react": "^19.0",
