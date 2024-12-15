@@ -13,7 +13,7 @@ import {
 
 // many-to-many relationship configured as per the docs at https://orm.drizzle.team/docs/relations#many-to-many
 
-const advocates = pgTable('advocates', {
+export const advocates = pgTable('advocates', {
   id: uuid('id').defaultRandom().primaryKey(), // UUID keys give us better predictability right now, and better testing because we aren't dependent upon insertion order.
   firstName: text('first_name').notNull(),
   lastName: text('last_name').notNull(),

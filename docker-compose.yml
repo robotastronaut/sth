@@ -2,10 +2,8 @@ services:
   db:
     image: postgres
     restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: solaceassignment
+    env_file:
+      - .env
     volumes:
       - psql:/var/lib/postgresql/data
     ports:
